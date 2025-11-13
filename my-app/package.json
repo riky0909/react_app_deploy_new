@@ -13,11 +13,11 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
+  "start": "react-scripts start",
+  "build": "react-scripts build",
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d build"
+},
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -36,6 +36,8 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://github.com/riky0909.github.io/react_app_deploy_new"
-
+  "homepage": "https://riky0909.github.io/react_app_deploy_new",
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
+  }
 }
