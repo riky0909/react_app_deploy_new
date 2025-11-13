@@ -22,6 +22,7 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+        working-directory: my-app
 
       - name: Build React app
         run: npm run build
