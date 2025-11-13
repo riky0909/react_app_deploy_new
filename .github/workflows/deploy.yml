@@ -20,15 +20,23 @@ jobs:
         with:
           node-version: 20
 
+      # Step 1: Install dependencies (working directory is correctly set)
       - name: Install dependencies
         run: npm install
         working-directory: my-app
 
+      # Step 2: Build React app
+      # IMPORTANT: working-directory added here!
       - name: Build React app
         run: npm run build
+        working-directory: my-app  # <--- यह ज़रूरी बदलाव है!
 
+      # Step 3: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
+          # Note: Since the build was run inside 'my-app', 
+          # the 'build' folder is located at 'my-app/build'. 
+          # We need to update the publish_dir path accordingly.
+          publish_dir: ./my-app/build # <--- यह भी ज़रूरी है!
