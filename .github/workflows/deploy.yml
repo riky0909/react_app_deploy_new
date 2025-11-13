@@ -3,7 +3,7 @@ name: Deploy React App to GitHub Pages
 on:
   push:
     branches:
-      - main  # or master, depending on your default branch
+      - main  # या master, जो भी default branch हो
 
 permissions:
   contents: write
@@ -12,31 +12,29 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
+      # Step 0: Checkout repository
       - name: Checkout code
         uses: actions/checkout@v4
 
+      # Step 1: Set up Node.js
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      # Step 1: Install dependencies (working directory is correctly set)
+      # Step 2: Install dependencies
       - name: Install dependencies
         run: npm install
         working-directory: my-app
 
-      # Step 2: Build React app
-      # IMPORTANT: working-directory added here!
+      # Step 3: Build React app
       - name: Build React app
         run: npm run build
-        working-directory: my-app  # <--- यह ज़रूरी बदलाव है!
+        working-directory: my-app
 
-      # Step 3: Deploy to GitHub Pages
+      # Step 4: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          # Note: Since the build was run inside 'my-app', 
-          # the 'build' folder is located at 'my-app/build'. 
-          # We need to update the publish_dir path accordingly.
-          publish_dir: ./my-app/build # <--- यह भी ज़रूरी है!
+          publish_dir: ./my-app/build
