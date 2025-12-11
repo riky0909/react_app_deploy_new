@@ -7,7 +7,7 @@ function App() {
   const [isLoading,setIsLoading] = useState(true)
   const getPropertyData = async()=>{
 try {
-  const url = "https://headless-practice.rf.gd/wp-json/wp/v2/properties";
+  const url = "https://headless-practice.rf.gd/proxy.php";
  const response = await axios.get(url)
  console.log("response",response);
  if(response?.status === 200){
