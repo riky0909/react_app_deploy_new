@@ -2,13 +2,6 @@ import logo from './logo.svg';
 import './App.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-const api = axios.create({
-    baseURL: 'https://wordpress-1565352-6083527.cloudwaysapps.com/wp-json/wp/v2',
-    headers: {
-        'Content-Type': 'application/json',
-        // अगर बाद में Authentication जोड़ना हो तो यहाँ डाल सकते हैं
-    }
-});
 function App() {
   const [data,setData] = useState([])
   const [isLoading,setIsLoading] = useState(true)
