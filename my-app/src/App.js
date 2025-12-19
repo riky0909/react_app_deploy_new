@@ -15,7 +15,7 @@ function App() {
   const getPropertyData = async()=>{
 try {
  const response = await axios.get(
-                'https://wordpress-1565352-6083527.cloudwaysapps.com/wp-json/wp/v2/posts',
+                'https://wordpress-1565352-6083527.cloudwaysapps.com/wp-json/wp/v2/properties',
                 {
                     headers: {
                         'Content-Type': 'application/json'
